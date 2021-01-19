@@ -8,5 +8,6 @@ iris = sns.load_dataset('iris')
 iris = pd.read_csv('iris.csv')
 # %%
 iris.head()
-
+length = iris.sepal_length
+width = iris.sepal_width
 # %%
