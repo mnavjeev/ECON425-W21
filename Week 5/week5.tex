@@ -113,8 +113,8 @@ perhaps of greater practical importance, this can be directly calculated in nump
 \begin{figure}[h!]
 	\centering
 	\begin{BVerbatim}
-		Yhat = logitFunction(Xtrain, beta)
-		grad = np.dot(Xtrain, Yhat - Ytrain)
+		Phat = logitFunction(Xtrain, beta)
+		grad = np.dot(Xtrain, Phat - Ytrain)
 	\end{BVerbatim}
 \end{figure}
 
