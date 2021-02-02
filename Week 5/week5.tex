@@ -1,0 +1,127 @@
+\documentclass[10pt]{article}
+
+% Packages with options
+\usepackage[english]{babel}
+\usepackage[mathscr]{euscript}
+\usepackage[margin=1in]{geometry} 
+\usepackage[utf8]{inputenc}
+\usepackage[small]{titlesec}
+
+% Primary Packages
+\usepackage{adjustbox, amsbsy, amsmath, amssymb, amsthm, bm, commath, chngcntr, dsfont, econometrics, fancyhdr, fancyvrb, gensymb, graphicx, IEEEtrantools, longtable, marginnote, mathrsfs, mathtools, mdframed, natbib, parskip, pgf, setspace, subfigure, tabularx, textcomp, tikz}
+
+% Hyperref Setup
+\usepackage[pdfauthor={Manu Navjeevan},
+			bookmarks=false,%
+			pdftitle={Econ 425, Week 5},%
+			pdftoolbar=false,%
+			pdfmenubar=true]{hyperref} %hyperref needs to be last
+
+% Rest of the setup is in the "Manu" package
+\usepackage{manu}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Econ 425, Week 5 \\ \Large Classification}%Title
+\author{Manu Navjeevan}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Binary Classification}%
+\label{sec:binary}
+
+Suppose I am interested in predicting a binary variable \(Y \in \{0,1\} \) using some (real-valued) explanatory variables \(\vX = \left(1, X_1,\dots,X_p\right)\). For example, in the exercise we will go over in class, we will use the \verb|penguins| dataset from \verb|seaborn|. 
+
+A naive approach to this problem would be to use linear regression to predict \(Y\), and interpret the  \(\widehat Y(\vX)\) value from linear regression as an estimate of the probability that \(Y = 1\) give the explanatory variables \(\vX\). That is, we could try to estimate a model of the form:
+\begin{equation}
+	\label{eq:lpm}
+    Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_p X_p
+\end{equation}
+And estimate \(\widehat{\Pr}\left(Y=1|\mX\right) = \widehat{\beta}_0 + \widehat\beta_1X_1 + \dots+\widehat{\beta}_p X_p\). However, if we are given a large (or sufficiently) enough value of, say \(X_1\), then we can make \(\widehat{\Pr}(Y=1|\mX)\) arbitrarily large or small. That is, we can \(\widehat{\Pr}(Y=1|\mX) > 1\) or \(\widehat{\Pr}(Y=1|\mX) < 0\), both nonsensical results.
+
+Of course, from a machine learning perspective, this isn't \textit{necessarily} a bad thing. We could still try and make a classification under the rule:
+\[
+	\widehat{Y} = \begin{cases}
+		1 & \text{if }\widehat{\Pr}(Y=1|\mX)  \geq 0.5\\ 
+		0 & \text{if }\widehat{\Pr}(Y=1|\mX) < 0.5
+	\end{cases}	
+.\] 
+However, this suggests that the linear model may not be the best fit for the data.
+
+\subsection{Logistic Regression}%
+\label{subsec:logit}
+
+The linear probability model described in \eqref{eq:lpm} makes the implicit assumption that the true probability \(\pi(\mX) := \Pr(Y=1|\mX)\) is linear in \(\mX\)\footnote{That is that \(\pi(\mX) = \beta_0 + \beta_1 X_1 + \dots + \beta_p X_p\)}. As we went over before, this is problematic because if \(\mX\) has an unbounded support (can take on any value in \(\SR^p\)), this will lead to predictions that are either below zero or above one. 
+
+Instead we want to specify a functional form for  \(\pi(\mX)\) that is bounded between zero and one. In logistic regression we will assume that the conditional probability has the functional form given below:
+\begin{equation}
+	\label{eq:logit-link}
+	\pi(\mX;\boldsymbol{\beta}) = \frac{1}{1 + \exp\left(-\left(\beta_0 + \beta_1 X_1 + \dots + \beta_p X_p\right)\right)} 
+\end{equation}
+
+In class or in prior courses, you may have been introduced to logistic regression as assuming that the log-odds \(\ln\left(\frac{\pi(\mX)}{1 - \pi(\mX)} \right)\) are linear. That is, you may have been taught:
+\[
+	\ln\left(\frac{\pi(\mX)}{1 - \pi(\mX)} \right) = \beta_0 + \beta_1 X_1 + \dots+\beta_p X_p
+.\] 
+This is an equivalent to the assumption that the conditional probability is of the form given in \eqref{eq:logit-link}, I just find the given setup easier to understand.
+
+In any case, the specification given in \eqref{eq:logit-link} is nice as it is bounded between zero and 1 as well as continuously differentiable with respect to \(\mX\) \footnote{It also is useful to verify that the probability is increasing in  \(\left(\beta_0 + \beta_1 X_1 + \dots + \beta_p X_p\right)\)}. What remains is to estimate the parameters \(\beta_0, \dots, \beta_p\) using our data.
+
+\subsubsection{Estimating the Parameters via Maximum Likelihood}%
+\label{subsubsec:MLE}
+
+One way of estimating the parameters of this model is via Maximum Likelihood. 
+
+Consider the following ``Likelihood Function", for evaluating the ``likelihood" or ``probability" of observing our data if the data was generated from a model  \(\pi(\mX ;\boldsymbol{\beta})\) with parameters \(\boldsymbol{\beta} = \left(\beta_0, \dots, \beta_p\right)\):
+\begin{equation}
+	\label{eq:likelihood}
+	L\left(\boldsymbol{\beta}\, \middle|\, \{Y_i, \mX_i\}_{i=1}^n \right) = \prod_{i=1}^n \pi\left(\mX_i;\boldsymbol{\beta}\right)^{Y_i}\left(1 - \pi\left(\mX_i ; \boldsymbol{\beta}\right)\right)^{1-Y_i}
+\end{equation}
+Note that for an observation where \(Y_i = 1\), \(\pi\left(\mX_i;\boldsymbol{\beta}\right)^{Y_i}\left(1 - \pi\left(\mX_i ; \boldsymbol{\beta}\right)\right)^{1-Y_i} = \pi(\mX_i;\boldsymbol{\beta})\) whereas for an observation where \(Y_i = 1\),  \(\pi\left(\mX_i;\boldsymbol{\beta}\right)^{Y_i}\left(1 - \pi\left(\mX_i ; \boldsymbol{\beta}\right)\right)^{1-Y_i} = 1 - \pi(\mX_i;\boldsymbol{\beta})\).
+
+In maximum likelihood estimation, we choose our parameters \(\boldsymbol{\beta} = \left(\beta_0, \dots, \beta_p\right)\) to maximize the likelihood function \(L\left(\boldsymbol{\beta}\,\middle|\,\{Y_i,\mX_i\}_{i=1}^n \right)\). Equivalently, since \(\ln(\cdot)\) is a strictly increasing function, we can maximize the log-likelihood \(\ell(\boldsymbol{\beta})\):
+\begin{align*}
+	\ell\left(\boldsymbol{\beta}\right) &= \ln L\left(\boldsymbol{\beta}\,\middle|\,\{Y_i,X_i\}_{i=1}^n \right) \\ 
+										&= \ln\left\{\prod_{i=1}^n \pi\left(\mX_i;\boldsymbol{\beta}\right)^{Y_i}\left(1 - \pi\left(\mX_i ; \boldsymbol{\beta}\right)\right)^{1-Y_i}\right\} \\
+										&= \sum_{i=1}^n Y_i\ln\pi\left(\mX_i ;\boldsymbol{\beta}\right) + (1 - Y_i)\ln(1 - \pi(\mX_i;\boldsymbol{\beta}))
+\end{align*}
+Note that this is numerically the same approach as using the ``log cost function approach" we went over in class. It is just motivated a bit differently (and I believe a bit more intuitively). Moreover, in industry this will be referred to as estimating the parameters via maximum likelihood, so it useful to understand what this means and where it comes from. 
+
+After we simplify the log likelihood function more (explained in \href{https://www.youtube.com/watch?v=YMJtsYIp4kg&t=351s}{this} YouTube video) and plug in the specific form for \(\pi(\mX;\boldsymbol{\beta})\), we will get that the log-likelihood simplifies to:
+
+\begin{equation}
+	\label{eq:loglikelihood}
+	\ell\left(\boldsymbol{\beta}\right) = \sum_{i=1}^n \left[\ln\left\{1 + e^{\boldsymbol{\beta}'\mX_i}\right\} - Y_i\boldsymbol{\beta}'\mX_i\right]
+\end{equation}
+where \(\boldsymbol{\beta}'\mX_i = \beta_0 + \beta_1X_1 + \dots + \beta_p X_p\). This final log-likelihood expression in \eqref{eq:loglikelihood} is what we will numerically try to maximize. 
+
+\paragraph{Gradient Descent}
+
+Equation~\eqref{eq:loglikelihood} gives us a fairly simple expression to differentiate and get the gradient of. By direct calculation we find that 
+\begin{equation}
+	\label{eq:ellGrad}
+	\nabla \ell(\boldsymbol{\beta}) = \sum_{i=1}^n \left(\pi(\mX_i; \boldsymbol{\beta}) - Y_i\right)\mX_i
+\end{equation}
+This can be expressed even more simply if we use the design matrix and the outcome vector. Let \(\vX = \left(\mX_1, \mX_2, \dots, \mX_n\right)' \in \SR^{n \times p}\) denote the design matrix (feature matrix) and \(\vY = \left(Y_1, \dots, Y_n\right)' \in \SR^p\) denote the outcome vector. Finally, let \(\tilde{\pi}(\vX;\boldsymbol{\beta}) = \left(\pi(\mX_i;\boldsymbol{\beta}),\dots, \pi(\mX_n;\boldsymbol{\beta})'\right)\) denote our vector of predicted probabilities at guess \(\boldsymbol{\beta}\). Then we can express the gradient: 
+\begin{equation}
+	\label{eq:matGrad}
+	\nabla \ell(\boldsymbol{\beta}) = \vX\cdot\left[\tilde\pi(\vX;\boldsymbol{\beta}) - \vY\right]
+\end{equation}
+perhaps of greater practical importance, this can be directly calculated in numpy using something like:
+\begin{figure}[htpb]
+	\centering
+	\begin{BVerbatim}
+		Yhat = logitFunction(Xtrain, beta)
+		grad = np.dot(Xtrain, Yhat - Ytrain)
+	\end{BVerbatim}
+\end{figure}
+Where the \verb|logitFunction| is some function that would take in \(\boldsymbol{\beta}\) and the feature matrix \(\vX\) (\verb|Xtrain|) are return the vector of predicted probabilities.
+
+
+
+
+
+\end{document}
+
