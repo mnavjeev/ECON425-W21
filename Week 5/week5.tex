@@ -110,13 +110,14 @@ This can be expressed even more simply if we use the design matrix and the outco
 	\nabla \ell(\boldsymbol{\beta}) = \vX\cdot\left[\tilde\pi(\vX;\boldsymbol{\beta}) - \vY\right]
 \end{equation}
 perhaps of greater practical importance, this can be directly calculated in numpy using something like:
-\begin{figure}[htpb]
+\begin{figure}[h!]
 	\centering
 	\begin{BVerbatim}
 		Yhat = logitFunction(Xtrain, beta)
 		grad = np.dot(Xtrain, Yhat - Ytrain)
 	\end{BVerbatim}
 \end{figure}
+
 Where the \verb|logitFunction| is some function that would take in \(\boldsymbol{\beta}\) and the feature matrix \(\vX\) (\verb|Xtrain|) are return the vector of predicted probabilities.
 
 
