@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1612255789 "week5.tex" "week5.pdf" "week5" 1612255791
-  "/dev/null" 1612255785 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1612258244 "week5.tex" "week5.pdf" "week5" 1612258246
+  "/dev/null" 1612258243 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/jknappen/ec/tcrm0500.tfm" 1136768653 1536 b3387106d9afecbfe14bde2de6eadf47 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/jknappen/ec/tcrm0600.tfm" 1136768653 1536 12e8c510d3e158fdd0e9a42e75118bd9 ""
@@ -248,8 +248,8 @@
   "/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1557342064 3277517 23507ed665b4dd9046f0f2a94bbef2be ""
   "/usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1557342086 4259635 562fc36ec496993777a6c428d8bfb811 ""
   "/usr/local/texlive/2019/texmf.cnf" 1557341546 577 d150fef99ac436ad1156e86b0892f6ef ""
-  "week5.aux" 1612255790 2000 66d9326cc3422dc17728333d1a3250c7 "pdflatex"
-  "week5.tex" 1612255787 8614 e8c831ce68341c9d6fced071a14399d8 ""
+  "week5.aux" 1612258246 2000 66d9326cc3422dc17728333d1a3250c7 "pdflatex"
+  "week5.tex" 1612258242 8614 74fb4a49776232a8fcb19bca52c19e42 ""
   (generated)
   "week5.aux"
   "week5.log"

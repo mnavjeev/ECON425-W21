@@ -104,7 +104,7 @@ Equation~\eqref{eq:loglikelihood} gives us a fairly simple expression to differe
 	\label{eq:ellGrad}
 	\nabla \ell(\boldsymbol{\beta}) = \sum_{i=1}^n \left(\pi(\mX_i; \boldsymbol{\beta}) - Y_i\right)\mX_i
 \end{equation}
-This can be expressed even more simply if we use the design matrix and the outcome vector. Let \(\vX = \left(\mX_1, \mX_2, \dots, \mX_n\right)' \in \SR^{n \times p}\) denote the design matrix (feature matrix) and \(\vY = \left(Y_1, \dots, Y_n\right)' \in \SR^p\) denote the outcome vector. Finally, let \(\tilde{\pi}(\vX;\boldsymbol{\beta}) = \left(\pi(\mX_i;\boldsymbol{\beta}),\dots, \pi(\mX_n;\boldsymbol{\beta})'\right)\) denote our vector of predicted probabilities at guess \(\boldsymbol{\beta}\). Then we can express the gradient: 
+This can be expressed even more simply if we use the design matrix and the outcome vector. Let \(\vX = \left(\mX_1, \mX_2, \dots, \mX_n\right)' \in \SR^{n \times p}\) denote the design matrix (feature matrix) and \(\vY = \left(Y_1, \dots, Y_n\right)' \in \SR^p\) denote the outcome vector. Finally, let \(\tilde{\pi}(\vX;\boldsymbol{\beta}) = \left(\pi(\mX_i;\boldsymbol{\beta}),\dots, \pi(\mX_n;\boldsymbol{\beta})\right)'\) denote our vector of predicted probabilities at guess \(\boldsymbol{\beta}\). Then we can express the gradient: 
 \begin{equation}
 	\label{eq:matGrad}
 	\nabla \ell(\boldsymbol{\beta}) = \vX\cdot\left[\tilde\pi(\vX;\boldsymbol{\beta}) - \vY\right]
