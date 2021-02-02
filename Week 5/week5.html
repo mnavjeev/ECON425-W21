@@ -14245,7 +14245,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[55]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Code for Week 5</span>
@@ -14322,7 +14322,7 @@ Index([&#39;species&#39;, &#39;island&#39;, &#39;bill_length_mm&#39;, &#39;bill_
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[56]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">penguins</span><span class="p">[[</span><span class="s1">&#39;One&#39;</span><span class="p">,</span><span class="s1">&#39;bill_length_mm&#39;</span><span class="p">,</span> <span class="s1">&#39;bill_depth_mm&#39;</span><span class="p">,</span><span class="s1">&#39;flipper_length_mm&#39;</span><span class="p">,</span><span class="s1">&#39;body_mass_g&#39;</span><span class="p">]]</span>
@@ -14344,15 +14344,15 @@ $$ \pi(\mathbf{X}_i; \boldsymbol{\beta}) = \frac{1}{1 + \exp\left(-\beta_0 - \be
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[57]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="o">-</span><span class="mf">0.001</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="o">-</span><span class="mf">0.001</span><span class="p">,</span><span class="mf">0.001</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">beta_initial</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="o">-</span><span class="mf">0.001</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="o">-</span><span class="mf">0.001</span><span class="p">,</span><span class="mf">0.001</span><span class="p">))</span>
 <span class="k">def</span> <span class="nf">LogitReg</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
-    <span class="n">power</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span><span class="n">beta</span><span class="p">)</span>
+    <span class="n">power</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span><span class="n">beta</span><span class="p">)</span>
     <span class="n">pHat</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">power</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">pHat</span>
-<span class="n">test</span> <span class="o">=</span> <span class="n">LogitReg</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">beta</span><span class="p">)</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">LogitReg</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">beta_initial</span><span class="p">)</span>
 <span class="c1"># print(test)</span>
 </pre></div>
 
@@ -14370,11 +14370,11 @@ $$ \ell(\boldsymbol\beta) = \sum_{i=1}^n Y_i\ln\pi\left(\mathbf{X}_i ;\boldsymbo
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[58]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">LogitLikelihood</span><span class="p">(</span><span class="n">Ytrain</span><span class="p">,</span> <span class="n">pHat</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Ytrain</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">pHat</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">Ytrain</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span><span class="n">pHat</span><span class="p">))</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ytrain</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Ytrain</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">pHat</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">Ytrain</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span><span class="n">pHat</span><span class="p">))</span>
     
 <span class="n">test2</span> <span class="o">=</span> <span class="n">LogitLikelihood</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">test</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">test2</span><span class="p">)</span>
@@ -14397,7 +14397,7 @@ $$ \ell(\boldsymbol\beta) = \sum_{i=1}^n Y_i\ln\pi\left(\mathbf{X}_i ;\boldsymbo
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>-528.9056104880059
+<pre>-2.5221444759399567
 </pre>
 </div>
 </div>
@@ -14412,7 +14412,7 @@ $$ \ell(\boldsymbol\beta) = \sum_{i=1}^n Y_i\ln\pi\left(\mathbf{X}_i ;\boldsymbo
 <p>We will find the parameters $\beta_0, \beta_1,...,\beta_p$ to maximize the (simplified) log-likelihood:
 $$ \ell(\boldsymbol{\beta}) = \sum_{i=1}^n \left[\ln\left\{1 + e^{\boldsymbol{\beta}\mathbf{X}_i}\right\} - Y_i\boldsymbol\beta\mathbf{X}_i\right] $$</p>
 <p>The gradient of $\ell(\boldsymbol\beta)$ is given:</p>
-$$\nabla \ell(\boldsymbol{\beta}) = \mathbf{X}\cdot\left[\tilde\pi(\mathbf{X};\boldsymbol{\beta}) - \mathbf{Y}\right]$$<p>where:
+$$\nabla \ell(\boldsymbol{\beta}) = \left[\tilde\pi(\mathbf{X};\boldsymbol{\beta}) - \mathbf{Y}\right]\cdot\mathbf{X}$$<p>where:
 $$\tilde{\pi}(\mathbf{X};\boldsymbol{\beta}) = \left(\pi(\mathbf{X}_i;\boldsymbol{\beta}),\dots, \pi(\mathbf{X}_n;\boldsymbol{\beta})\right)'$$ denotes our vector of predicted probabilities at guess $\boldsymbol{\beta}$</p>
 <p>In order to implement this, we will need to write a gradient descent function. We can use what we have above:</p>
 
@@ -14420,7 +14420,7 @@ $$\tilde{\pi}(\mathbf{X};\boldsymbol{\beta}) = \left(\pi(\mathbf{X}_i;\boldsymbo
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[84]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[86]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">LogitGradientDescent</span><span class="p">(</span><span class="n">beta_initial</span><span class="p">,</span> <span class="n">num_iterations</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">Xtrain</span><span class="p">,</span> <span class="n">Ytrain</span><span class="p">):</span>
@@ -14436,21 +14436,24 @@ $$\tilde{\pi}(\mathbf{X};\boldsymbol{\beta}) = \left(\pi(\mathbf{X}_i;\boldsymbo
         <span class="c1"># Add the likelihood to the list</span>
         <span class="n">likelihoods</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">likelihood</span><span class="p">)</span>
         <span class="c1"># Compute the gradient</span>
-        <span class="n">grad</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">Ytrain</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">pHat</span> <span class="o">-</span> <span class="n">Ytrain</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+        <span class="n">grad</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">Ytrain</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ytrain</span> <span class="o">-</span> <span class="n">pHat</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
         <span class="c1"># Update Beta</span>
         <span class="n">beta</span> <span class="o">=</span> <span class="n">beta</span> <span class="o">+</span> <span class="n">gamma</span><span class="o">*</span><span class="n">grad</span>
     <span class="c1"># Compute the likelihood for the final value of beta</span>
     <span class="n">pHat</span> <span class="o">=</span> <span class="n">LogitReg</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
     <span class="n">likelihood</span> <span class="o">=</span> <span class="n">LogitLikelihood</span><span class="p">(</span><span class="n">Ytrain</span><span class="p">,</span> <span class="n">pHat</span><span class="p">)</span>
     <span class="n">likelihoods</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">likelihood</span><span class="p">)</span>
-    <span class="c1"># Return the last value of beta, the final log-likelihood, and the likelihoods</span>
+    <span class="c1"># Return the last value of beta and the likelihoods</span>
     <span class="k">return</span> <span class="n">beta</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">likelihoods</span><span class="p">)</span>
-         
-<span class="n">beta_initial</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">num_iterations</span> <span class="o">=</span> <span class="mi">50000</span>
-<span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.00001</span>
 
-<span class="n">betaFinal</span><span class="p">,</span> <span class="n">likelihoods</span> <span class="o">=</span> <span class="n">LogitGradientDescent</span><span class="p">(</span><span class="n">beta_initial</span><span class="p">,</span> <span class="n">num_iterations</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<span class="n">Xtrain</span><span class="p">,</span> <span class="n">Xtest</span><span class="p">,</span> <span class="n">Ytrain</span><span class="p">,</span> <span class="n">Ytest</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+
+<span class="n">num_iterations</span> <span class="o">=</span> <span class="mi">50000</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.0000001</span>
+
+<span class="n">betaFinal</span><span class="p">,</span> <span class="n">likelihoods</span> <span class="o">=</span> <span class="n">LogitGradientDescent</span><span class="p">(</span><span class="n">beta_initial</span><span class="p">,</span> <span class="n">num_iterations</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">Xtrain</span><span class="p">,</span> <span class="n">Ytrain</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">betaFinal</span><span class="p">)</span>
 </pre></div>
 
@@ -14471,7 +14474,7 @@ $$\tilde{\pi}(\mathbf{X};\boldsymbol{\beta}) = \left(\pi(\mathbf{X}_i;\boldsymbo
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[-1.00381281 -0.32905132 -1.22454237 -0.63461888  0.03456795]
+<pre>[-0.00069094 -0.00481325  0.01057491  0.02554648 -0.00130612]
 </pre>
 </div>
 </div>
@@ -14489,11 +14492,10 @@ $$\tilde{\pi}(\mathbf{X};\boldsymbol{\beta}) = \left(\pi(\mathbf{X}_i;\boldsymbo
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[85]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[76]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">likelihoods</span> <span class="o">=</span> <span class="n">likelihoods</span><span class="p">[</span><span class="n">likelihoods</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1000000</span><span class="p">]</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">likelihoods</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">likelihoods</span><span class="p">)</span>
 </pre></div>
@@ -14511,13 +14513,13 @@ $$\tilde{\pi}(\mathbf{X};\boldsymbol{\beta}) = \left(\pi(\mathbf{X}_i;\boldsymbo
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[85]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[76]:</div>
 
 
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[&lt;matplotlib.lines.Line2D at 0x7fc50fe39110&gt;]</pre>
+<pre>[&lt;matplotlib.lines.Line2D at 0x7fc427defad0&gt;]</pre>
 </div>
 
 </div>
@@ -14534,7 +14536,7 @@ $$\tilde{\pi}(\mathbf{X};\boldsymbol{\beta}) = \left(\pi(\mathbf{X}_i;\boldsymbo
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Created with matplotlib (https://matplotlib.org/) -->
-<svg height="248.518125pt" version="1.1" viewBox="0 0 390.029687 248.518125" width="390.029687pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg height="250.053321pt" version="1.1" viewBox="0 0 390.714631 250.053321" width="390.714631pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
  <defs>
   <style type="text/css">
 *{stroke-linecap:butt;stroke-linejoin:round;}
@@ -14542,19 +14544,19 @@ $$\tilde{\pi}(\mathbf{X};\boldsymbol{\beta}) = \left(\pi(\mathbf{X}_i;\boldsymbo
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 248.518125 
-L 390.029687 248.518125 
-L 390.029687 0 
+   <path d="M 0 250.053321 
+L 390.714631 250.053321 
+L 390.714631 0 
 L 0 0 
 z
 " style="fill:none;"/>
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 48.029688 224.64 
-L 382.829688 224.64 
-L 382.829688 7.2 
-L 48.029688 7.2 
+    <path d="M 44.845313 226.175196 
+L 379.645313 226.175196 
+L 379.645313 8.735196 
+L 44.845313 8.735196 
 z
 " style="fill:#ffffff;"/>
    </g>
@@ -14564,10 +14566,10 @@ z
       <defs>
        <path d="M 0 0 
 L 0 3.5 
-" id="m1756a9fa6e" style="stroke:#000000;stroke-width:0.8;"/>
+" id="m4f471cd9ec" style="stroke:#000000;stroke-width:0.8;"/>
       </defs>
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="63.247869" xlink:href="#m1756a9fa6e" y="224.64"/>
+       <use style="stroke:#000000;stroke-width:0.8;" x="60.063494" xlink:href="#m4f471cd9ec" y="226.175196"/>
       </g>
      </g>
      <g id="text_1">
@@ -14595,7 +14597,7 @@ Q 19.53125 74.21875 31.78125 74.21875
 z
 " id="DejaVuSans-48"/>
       </defs>
-      <g transform="translate(60.066619 239.238437)scale(0.1 -0.1)">
+      <g transform="translate(56.882244 240.773634)scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-48"/>
       </g>
      </g>
@@ -14603,101 +14605,10 @@ z
     <g id="xtick_2">
      <g id="line2d_2">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="135.964717" xlink:href="#m1756a9fa6e" y="224.64"/>
+       <use style="stroke:#000000;stroke-width:0.8;" x="120.936222" xlink:href="#m4f471cd9ec" y="226.175196"/>
       </g>
      </g>
      <g id="text_2">
-      <!-- 5000 -->
-      <defs>
-       <path d="M 10.796875 72.90625 
-L 49.515625 72.90625 
-L 49.515625 64.59375 
-L 19.828125 64.59375 
-L 19.828125 46.734375 
-Q 21.96875 47.46875 24.109375 47.828125 
-Q 26.265625 48.1875 28.421875 48.1875 
-Q 40.625 48.1875 47.75 41.5 
-Q 54.890625 34.8125 54.890625 23.390625 
-Q 54.890625 11.625 47.5625 5.09375 
-Q 40.234375 -1.421875 26.90625 -1.421875 
-Q 22.3125 -1.421875 17.546875 -0.640625 
-Q 12.796875 0.140625 7.71875 1.703125 
-L 7.71875 11.625 
-Q 12.109375 9.234375 16.796875 8.0625 
-Q 21.484375 6.890625 26.703125 6.890625 
-Q 35.15625 6.890625 40.078125 11.328125 
-Q 45.015625 15.765625 45.015625 23.390625 
-Q 45.015625 31 40.078125 35.4375 
-Q 35.15625 39.890625 26.703125 39.890625 
-Q 22.75 39.890625 18.8125 39.015625 
-Q 14.890625 38.140625 10.796875 36.28125 
-z
-" id="DejaVuSans-53"/>
-      </defs>
-      <g transform="translate(123.239717 239.238437)scale(0.1 -0.1)">
-       <use xlink:href="#DejaVuSans-53"/>
-       <use x="63.623047" xlink:href="#DejaVuSans-48"/>
-       <use x="127.246094" xlink:href="#DejaVuSans-48"/>
-       <use x="190.869141" xlink:href="#DejaVuSans-48"/>
-      </g>
-     </g>
-    </g>
-    <g id="xtick_3">
-     <g id="line2d_3">
-      <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="208.681564" xlink:href="#m1756a9fa6e" y="224.64"/>
-      </g>
-     </g>
-     <g id="text_3">
-      <!-- 10000 -->
-      <defs>
-       <path d="M 12.40625 8.296875 
-L 28.515625 8.296875 
-L 28.515625 63.921875 
-L 10.984375 60.40625 
-L 10.984375 69.390625 
-L 28.421875 72.90625 
-L 38.28125 72.90625 
-L 38.28125 8.296875 
-L 54.390625 8.296875 
-L 54.390625 0 
-L 12.40625 0 
-z
-" id="DejaVuSans-49"/>
-      </defs>
-      <g transform="translate(192.775314 239.238437)scale(0.1 -0.1)">
-       <use xlink:href="#DejaVuSans-49"/>
-       <use x="63.623047" xlink:href="#DejaVuSans-48"/>
-       <use x="127.246094" xlink:href="#DejaVuSans-48"/>
-       <use x="190.869141" xlink:href="#DejaVuSans-48"/>
-       <use x="254.492188" xlink:href="#DejaVuSans-48"/>
-      </g>
-     </g>
-    </g>
-    <g id="xtick_4">
-     <g id="line2d_4">
-      <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="281.398411" xlink:href="#m1756a9fa6e" y="224.64"/>
-      </g>
-     </g>
-     <g id="text_4">
-      <!-- 15000 -->
-      <g transform="translate(265.492161 239.238437)scale(0.1 -0.1)">
-       <use xlink:href="#DejaVuSans-49"/>
-       <use x="63.623047" xlink:href="#DejaVuSans-53"/>
-       <use x="127.246094" xlink:href="#DejaVuSans-48"/>
-       <use x="190.869141" xlink:href="#DejaVuSans-48"/>
-       <use x="254.492188" xlink:href="#DejaVuSans-48"/>
-      </g>
-     </g>
-    </g>
-    <g id="xtick_5">
-     <g id="line2d_5">
-      <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="354.115259" xlink:href="#m1756a9fa6e" y="224.64"/>
-      </g>
-     </g>
-     <g id="text_5">
       <!-- 20000 -->
       <defs>
        <path d="M 19.1875 8.296875 
@@ -14725,7 +14636,7 @@ Q 31.109375 20.453125 19.1875 8.296875
 z
 " id="DejaVuSans-50"/>
       </defs>
-      <g transform="translate(338.209009 239.238437)scale(0.1 -0.1)">
+      <g transform="translate(105.029972 240.773634)scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-50"/>
        <use x="63.623047" xlink:href="#DejaVuSans-48"/>
        <use x="127.246094" xlink:href="#DejaVuSans-48"/>
@@ -14734,28 +14645,15 @@ z
       </g>
      </g>
     </g>
-   </g>
-   <g id="matplotlib.axis_2">
-    <g id="ytick_1">
-     <g id="line2d_6">
-      <defs>
-       <path d="M 0 0 
-L -3.5 0 
-" id="mc953e2aa28" style="stroke:#000000;stroke-width:0.8;"/>
-      </defs>
+    <g id="xtick_3">
+     <g id="line2d_3">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="48.029688" xlink:href="#mc953e2aa28" y="189.5259"/>
+       <use style="stroke:#000000;stroke-width:0.8;" x="181.808949" xlink:href="#m4f471cd9ec" y="226.175196"/>
       </g>
      </g>
-     <g id="text_6">
-      <!-- −4400 -->
+     <g id="text_3">
+      <!-- 40000 -->
       <defs>
-       <path d="M 10.59375 35.5 
-L 73.1875 35.5 
-L 73.1875 27.203125 
-L 10.59375 27.203125 
-z
-" id="DejaVuSans-8722"/>
        <path d="M 37.796875 64.3125 
 L 12.890625 25.390625 
 L 37.796875 25.390625 
@@ -14774,90 +14672,73 @@ L 4.890625 26.703125
 z
 " id="DejaVuSans-52"/>
       </defs>
-      <g transform="translate(7.2 193.325118)scale(0.1 -0.1)">
-       <use xlink:href="#DejaVuSans-8722"/>
-       <use x="83.789062" xlink:href="#DejaVuSans-52"/>
-       <use x="147.412109" xlink:href="#DejaVuSans-52"/>
-       <use x="211.035156" xlink:href="#DejaVuSans-48"/>
-       <use x="274.658203" xlink:href="#DejaVuSans-48"/>
+      <g transform="translate(165.902699 240.773634)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-52"/>
+       <use x="63.623047" xlink:href="#DejaVuSans-48"/>
+       <use x="127.246094" xlink:href="#DejaVuSans-48"/>
+       <use x="190.869141" xlink:href="#DejaVuSans-48"/>
+       <use x="254.492188" xlink:href="#DejaVuSans-48"/>
       </g>
      </g>
     </g>
-    <g id="ytick_2">
-     <g id="line2d_7">
+    <g id="xtick_4">
+     <g id="line2d_4">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="48.029688" xlink:href="#mc953e2aa28" y="152.883507"/>
+       <use style="stroke:#000000;stroke-width:0.8;" x="242.681676" xlink:href="#m4f471cd9ec" y="226.175196"/>
       </g>
      </g>
-     <g id="text_7">
-      <!-- −4200 -->
-      <g transform="translate(7.2 156.682726)scale(0.1 -0.1)">
-       <use xlink:href="#DejaVuSans-8722"/>
-       <use x="83.789062" xlink:href="#DejaVuSans-52"/>
-       <use x="147.412109" xlink:href="#DejaVuSans-50"/>
-       <use x="211.035156" xlink:href="#DejaVuSans-48"/>
-       <use x="274.658203" xlink:href="#DejaVuSans-48"/>
-      </g>
-     </g>
-    </g>
-    <g id="ytick_3">
-     <g id="line2d_8">
-      <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="48.029688" xlink:href="#mc953e2aa28" y="116.241115"/>
-      </g>
-     </g>
-     <g id="text_8">
-      <!-- −4000 -->
-      <g transform="translate(7.2 120.040333)scale(0.1 -0.1)">
-       <use xlink:href="#DejaVuSans-8722"/>
-       <use x="83.789062" xlink:href="#DejaVuSans-52"/>
-       <use x="147.412109" xlink:href="#DejaVuSans-48"/>
-       <use x="211.035156" xlink:href="#DejaVuSans-48"/>
-       <use x="274.658203" xlink:href="#DejaVuSans-48"/>
-      </g>
-     </g>
-    </g>
-    <g id="ytick_4">
-     <g id="line2d_9">
-      <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="48.029688" xlink:href="#mc953e2aa28" y="79.598722"/>
-      </g>
-     </g>
-     <g id="text_9">
-      <!-- −3800 -->
+     <g id="text_4">
+      <!-- 60000 -->
       <defs>
-       <path d="M 40.578125 39.3125 
-Q 47.65625 37.796875 51.625 33 
-Q 55.609375 28.21875 55.609375 21.1875 
-Q 55.609375 10.40625 48.1875 4.484375 
-Q 40.765625 -1.421875 27.09375 -1.421875 
-Q 22.515625 -1.421875 17.65625 -0.515625 
-Q 12.796875 0.390625 7.625 2.203125 
-L 7.625 11.71875 
-Q 11.71875 9.328125 16.59375 8.109375 
-Q 21.484375 6.890625 26.8125 6.890625 
-Q 36.078125 6.890625 40.9375 10.546875 
-Q 45.796875 14.203125 45.796875 21.1875 
-Q 45.796875 27.640625 41.28125 31.265625 
-Q 36.765625 34.90625 28.71875 34.90625 
-L 20.21875 34.90625 
-L 20.21875 43.015625 
-L 29.109375 43.015625 
-Q 36.375 43.015625 40.234375 45.921875 
-Q 44.09375 48.828125 44.09375 54.296875 
-Q 44.09375 59.90625 40.109375 62.90625 
-Q 36.140625 65.921875 28.71875 65.921875 
-Q 24.65625 65.921875 20.015625 65.03125 
-Q 15.375 64.15625 9.8125 62.3125 
-L 9.8125 71.09375 
-Q 15.4375 72.65625 20.34375 73.4375 
-Q 25.25 74.21875 29.59375 74.21875 
-Q 40.828125 74.21875 47.359375 69.109375 
-Q 53.90625 64.015625 53.90625 55.328125 
-Q 53.90625 49.265625 50.4375 45.09375 
-Q 46.96875 40.921875 40.578125 39.3125 
+       <path d="M 33.015625 40.375 
+Q 26.375 40.375 22.484375 35.828125 
+Q 18.609375 31.296875 18.609375 23.390625 
+Q 18.609375 15.53125 22.484375 10.953125 
+Q 26.375 6.390625 33.015625 6.390625 
+Q 39.65625 6.390625 43.53125 10.953125 
+Q 47.40625 15.53125 47.40625 23.390625 
+Q 47.40625 31.296875 43.53125 35.828125 
+Q 39.65625 40.375 33.015625 40.375 
 z
-" id="DejaVuSans-51"/>
+M 52.59375 71.296875 
+L 52.59375 62.3125 
+Q 48.875 64.0625 45.09375 64.984375 
+Q 41.3125 65.921875 37.59375 65.921875 
+Q 27.828125 65.921875 22.671875 59.328125 
+Q 17.53125 52.734375 16.796875 39.40625 
+Q 19.671875 43.65625 24.015625 45.921875 
+Q 28.375 48.1875 33.59375 48.1875 
+Q 44.578125 48.1875 50.953125 41.515625 
+Q 57.328125 34.859375 57.328125 23.390625 
+Q 57.328125 12.15625 50.6875 5.359375 
+Q 44.046875 -1.421875 33.015625 -1.421875 
+Q 20.359375 -1.421875 13.671875 8.265625 
+Q 6.984375 17.96875 6.984375 36.375 
+Q 6.984375 53.65625 15.1875 63.9375 
+Q 23.390625 74.21875 37.203125 74.21875 
+Q 40.921875 74.21875 44.703125 73.484375 
+Q 48.484375 72.75 52.59375 71.296875 
+z
+" id="DejaVuSans-54"/>
+      </defs>
+      <g transform="translate(226.775426 240.773634)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-54"/>
+       <use x="63.623047" xlink:href="#DejaVuSans-48"/>
+       <use x="127.246094" xlink:href="#DejaVuSans-48"/>
+       <use x="190.869141" xlink:href="#DejaVuSans-48"/>
+       <use x="254.492188" xlink:href="#DejaVuSans-48"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="303.554403" xlink:href="#m4f471cd9ec" y="226.175196"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <!-- 80000 -->
+      <defs>
        <path d="M 31.78125 34.625 
 Q 24.75 34.625 20.71875 30.859375 
 Q 16.703125 27.09375 16.703125 20.515625 
@@ -14898,132 +14779,300 @@ Q 18.3125 60.0625 18.3125 54.390625
 z
 " id="DejaVuSans-56"/>
       </defs>
-      <g transform="translate(7.2 83.397941)scale(0.1 -0.1)">
+      <g transform="translate(287.648153 240.773634)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-56"/>
+       <use x="63.623047" xlink:href="#DejaVuSans-48"/>
+       <use x="127.246094" xlink:href="#DejaVuSans-48"/>
+       <use x="190.869141" xlink:href="#DejaVuSans-48"/>
+       <use x="254.492188" xlink:href="#DejaVuSans-48"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="364.427131" xlink:href="#m4f471cd9ec" y="226.175196"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <!-- 100000 -->
+      <defs>
+       <path d="M 12.40625 8.296875 
+L 28.515625 8.296875 
+L 28.515625 63.921875 
+L 10.984375 60.40625 
+L 10.984375 69.390625 
+L 28.421875 72.90625 
+L 38.28125 72.90625 
+L 38.28125 8.296875 
+L 54.390625 8.296875 
+L 54.390625 0 
+L 12.40625 0 
+z
+" id="DejaVuSans-49"/>
+      </defs>
+      <g transform="translate(345.339631 240.773634)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-49"/>
+       <use x="63.623047" xlink:href="#DejaVuSans-48"/>
+       <use x="127.246094" xlink:href="#DejaVuSans-48"/>
+       <use x="190.869141" xlink:href="#DejaVuSans-48"/>
+       <use x="254.492188" xlink:href="#DejaVuSans-48"/>
+       <use x="318.115234" xlink:href="#DejaVuSans-48"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_7">
+      <defs>
+       <path d="M 0 0 
+L -3.5 0 
+" id="mc2a33f2e8c" style="stroke:#000000;stroke-width:0.8;"/>
+      </defs>
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="44.845313" xlink:href="#mc2a33f2e8c" y="214.043407"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <!-- −2.50 -->
+      <defs>
+       <path d="M 10.59375 35.5 
+L 73.1875 35.5 
+L 73.1875 27.203125 
+L 10.59375 27.203125 
+z
+" id="DejaVuSans-8722"/>
+       <path d="M 10.6875 12.40625 
+L 21 12.40625 
+L 21 0 
+L 10.6875 0 
+z
+" id="DejaVuSans-46"/>
+       <path d="M 10.796875 72.90625 
+L 49.515625 72.90625 
+L 49.515625 64.59375 
+L 19.828125 64.59375 
+L 19.828125 46.734375 
+Q 21.96875 47.46875 24.109375 47.828125 
+Q 26.265625 48.1875 28.421875 48.1875 
+Q 40.625 48.1875 47.75 41.5 
+Q 54.890625 34.8125 54.890625 23.390625 
+Q 54.890625 11.625 47.5625 5.09375 
+Q 40.234375 -1.421875 26.90625 -1.421875 
+Q 22.3125 -1.421875 17.546875 -0.640625 
+Q 12.796875 0.140625 7.71875 1.703125 
+L 7.71875 11.625 
+Q 12.109375 9.234375 16.796875 8.0625 
+Q 21.484375 6.890625 26.703125 6.890625 
+Q 35.15625 6.890625 40.078125 11.328125 
+Q 45.015625 15.765625 45.015625 23.390625 
+Q 45.015625 31 40.078125 35.4375 
+Q 35.15625 39.890625 26.703125 39.890625 
+Q 22.75 39.890625 18.8125 39.015625 
+Q 14.890625 38.140625 10.796875 36.28125 
+z
+" id="DejaVuSans-53"/>
+      </defs>
+      <g transform="translate(7.2 217.842625)scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-8722"/>
-       <use x="83.789062" xlink:href="#DejaVuSans-51"/>
-       <use x="147.412109" xlink:href="#DejaVuSans-56"/>
-       <use x="211.035156" xlink:href="#DejaVuSans-48"/>
-       <use x="274.658203" xlink:href="#DejaVuSans-48"/>
+       <use x="83.789062" xlink:href="#DejaVuSans-50"/>
+       <use x="147.412109" xlink:href="#DejaVuSans-46"/>
+       <use x="179.199219" xlink:href="#DejaVuSans-53"/>
+       <use x="242.822266" xlink:href="#DejaVuSans-48"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_8">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="44.845313" xlink:href="#mc2a33f2e8c" y="188.662883"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <!-- −2.25 -->
+      <g transform="translate(7.2 192.462102)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-8722"/>
+       <use x="83.789062" xlink:href="#DejaVuSans-50"/>
+       <use x="147.412109" xlink:href="#DejaVuSans-46"/>
+       <use x="179.199219" xlink:href="#DejaVuSans-50"/>
+       <use x="242.822266" xlink:href="#DejaVuSans-53"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_9">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="44.845313" xlink:href="#mc2a33f2e8c" y="163.28236"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <!-- −2.00 -->
+      <g transform="translate(7.2 167.081578)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-8722"/>
+       <use x="83.789062" xlink:href="#DejaVuSans-50"/>
+       <use x="147.412109" xlink:href="#DejaVuSans-46"/>
+       <use x="179.199219" xlink:href="#DejaVuSans-48"/>
+       <use x="242.822266" xlink:href="#DejaVuSans-48"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_10">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="44.845313" xlink:href="#mc2a33f2e8c" y="137.901836"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <!-- −1.75 -->
+      <defs>
+       <path d="M 8.203125 72.90625 
+L 55.078125 72.90625 
+L 55.078125 68.703125 
+L 28.609375 0 
+L 18.3125 0 
+L 43.21875 64.59375 
+L 8.203125 64.59375 
+z
+" id="DejaVuSans-55"/>
+      </defs>
+      <g transform="translate(7.2 141.701055)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-8722"/>
+       <use x="83.789062" xlink:href="#DejaVuSans-49"/>
+       <use x="147.412109" xlink:href="#DejaVuSans-46"/>
+       <use x="179.199219" xlink:href="#DejaVuSans-55"/>
+       <use x="242.822266" xlink:href="#DejaVuSans-53"/>
       </g>
      </g>
     </g>
     <g id="ytick_5">
-     <g id="line2d_10">
+     <g id="line2d_11">
       <g>
-       <use style="stroke:#000000;stroke-width:0.8;" x="48.029688" xlink:href="#mc953e2aa28" y="42.95633"/>
+       <use style="stroke:#000000;stroke-width:0.8;" x="44.845313" xlink:href="#mc2a33f2e8c" y="112.521313"/>
       </g>
      </g>
-     <g id="text_10">
-      <!-- −3600 -->
-      <defs>
-       <path d="M 33.015625 40.375 
-Q 26.375 40.375 22.484375 35.828125 
-Q 18.609375 31.296875 18.609375 23.390625 
-Q 18.609375 15.53125 22.484375 10.953125 
-Q 26.375 6.390625 33.015625 6.390625 
-Q 39.65625 6.390625 43.53125 10.953125 
-Q 47.40625 15.53125 47.40625 23.390625 
-Q 47.40625 31.296875 43.53125 35.828125 
-Q 39.65625 40.375 33.015625 40.375 
-z
-M 52.59375 71.296875 
-L 52.59375 62.3125 
-Q 48.875 64.0625 45.09375 64.984375 
-Q 41.3125 65.921875 37.59375 65.921875 
-Q 27.828125 65.921875 22.671875 59.328125 
-Q 17.53125 52.734375 16.796875 39.40625 
-Q 19.671875 43.65625 24.015625 45.921875 
-Q 28.375 48.1875 33.59375 48.1875 
-Q 44.578125 48.1875 50.953125 41.515625 
-Q 57.328125 34.859375 57.328125 23.390625 
-Q 57.328125 12.15625 50.6875 5.359375 
-Q 44.046875 -1.421875 33.015625 -1.421875 
-Q 20.359375 -1.421875 13.671875 8.265625 
-Q 6.984375 17.96875 6.984375 36.375 
-Q 6.984375 53.65625 15.1875 63.9375 
-Q 23.390625 74.21875 37.203125 74.21875 
-Q 40.921875 74.21875 44.703125 73.484375 
-Q 48.484375 72.75 52.59375 71.296875 
-z
-" id="DejaVuSans-54"/>
-      </defs>
-      <g transform="translate(7.2 46.755548)scale(0.1 -0.1)">
+     <g id="text_11">
+      <!-- −1.50 -->
+      <g transform="translate(7.2 116.320531)scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-8722"/>
-       <use x="83.789062" xlink:href="#DejaVuSans-51"/>
-       <use x="147.412109" xlink:href="#DejaVuSans-54"/>
-       <use x="211.035156" xlink:href="#DejaVuSans-48"/>
-       <use x="274.658203" xlink:href="#DejaVuSans-48"/>
+       <use x="83.789062" xlink:href="#DejaVuSans-49"/>
+       <use x="147.412109" xlink:href="#DejaVuSans-46"/>
+       <use x="179.199219" xlink:href="#DejaVuSans-53"/>
+       <use x="242.822266" xlink:href="#DejaVuSans-48"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_12">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="44.845313" xlink:href="#mc2a33f2e8c" y="87.140789"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <!-- −1.25 -->
+      <g transform="translate(7.2 90.940008)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-8722"/>
+       <use x="83.789062" xlink:href="#DejaVuSans-49"/>
+       <use x="147.412109" xlink:href="#DejaVuSans-46"/>
+       <use x="179.199219" xlink:href="#DejaVuSans-50"/>
+       <use x="242.822266" xlink:href="#DejaVuSans-53"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_13">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="44.845313" xlink:href="#mc2a33f2e8c" y="61.760266"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <!-- −1.00 -->
+      <g transform="translate(7.2 65.559484)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-8722"/>
+       <use x="83.789062" xlink:href="#DejaVuSans-49"/>
+       <use x="147.412109" xlink:href="#DejaVuSans-46"/>
+       <use x="179.199219" xlink:href="#DejaVuSans-48"/>
+       <use x="242.822266" xlink:href="#DejaVuSans-48"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_14">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="44.845313" xlink:href="#mc2a33f2e8c" y="36.379742"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <!-- −0.75 -->
+      <g transform="translate(7.2 40.178961)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-8722"/>
+       <use x="83.789062" xlink:href="#DejaVuSans-48"/>
+       <use x="147.412109" xlink:href="#DejaVuSans-46"/>
+       <use x="179.199219" xlink:href="#DejaVuSans-55"/>
+       <use x="242.822266" xlink:href="#DejaVuSans-53"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_15">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="44.845313" xlink:href="#mc2a33f2e8c" y="10.999219"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <!-- −0.50 -->
+      <g transform="translate(7.2 14.798437)scale(0.1 -0.1)">
+       <use xlink:href="#DejaVuSans-8722"/>
+       <use x="83.789062" xlink:href="#DejaVuSans-48"/>
+       <use x="147.412109" xlink:href="#DejaVuSans-46"/>
+       <use x="179.199219" xlink:href="#DejaVuSans-53"/>
+       <use x="242.822266" xlink:href="#DejaVuSans-48"/>
       </g>
      </g>
     </g>
    </g>
-   <g id="line2d_11">
-    <path clip-path="url(#p39a6b0d4da)" d="M 63.247869 17.083636 
-L 63.262413 214.756364 
-L 63.364216 153.454525 
-L 63.37876 168.575687 
-L 63.480563 161.186946 
-L 63.495107 162.725436 
-L 63.59691 161.832435 
-L 63.611454 161.97248 
-L 63.68417 161.791692 
-L 63.698714 161.801104 
-L 63.916864 161.500833 
-L 70.28686 153.415022 
-L 74.998912 147.839059 
-L 79.74005 142.5723 
-L 84.466645 137.652032 
-L 89.222327 133.021617 
-L 93.905292 128.766929 
-L 98.690061 124.727182 
-L 103.591176 120.90807 
-L 107.866927 117.83615 
-L 112.593522 114.715724 
-L 116.98562 112.065944 
-L 121.494064 109.583242 
-L 126.147942 107.256156 
-L 131.019971 105.055304 
-L 136.168324 102.965415 
-L 141.680261 100.965335 
-L 147.643042 99.040626 
-L 154.202102 97.165631 
-L 161.546504 95.312486 
-L 169.967115 93.440338 
-L 179.929323 91.486438 
-L 188.975298 89.888996 
-L 199.766479 88.135083 
-L 220.112652 85.098879 
-L 256.034775 80.125638 
-L 294.647421 75.003441 
-L 367.611506 65.479226 
-L 367.611506 65.479226 
+   <g id="line2d_16">
+    <path clip-path="url(#p1513b7e8e1)" d="M 60.063494 216.29156 
+L 60.182196 28.473037 
+L 74.797738 27.122855 
+L 90.789003 25.872354 
+L 108.469487 24.71669 
+L 128.247036 23.651207 
+L 150.660374 22.671376 
+L 176.455193 21.771914 
+L 206.690676 20.946529 
+L 242.946473 20.186722 
+L 287.700102 19.480084 
+L 345.160913 18.805986 
+L 364.427131 18.618833 
+L 364.427131 18.618833 
 " style="fill:none;stroke:#1f77b4;stroke-linecap:square;stroke-width:1.5;"/>
    </g>
    <g id="patch_3">
-    <path d="M 48.029688 224.64 
-L 48.029688 7.2 
+    <path d="M 44.845313 226.175196 
+L 44.845313 8.735196 
 " style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
    </g>
    <g id="patch_4">
-    <path d="M 382.829688 224.64 
-L 382.829688 7.2 
+    <path d="M 379.645313 226.175196 
+L 379.645313 8.735196 
 " style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
    </g>
    <g id="patch_5">
-    <path d="M 48.029688 224.64 
-L 382.829688 224.64 
+    <path d="M 44.845313 226.175196 
+L 379.645313 226.175196 
 " style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
    </g>
    <g id="patch_6">
-    <path d="M 48.029688 7.2 
-L 382.829688 7.2 
+    <path d="M 44.845313 8.735196 
+L 379.645313 8.735196 
 " style="fill:none;stroke:#000000;stroke-linecap:square;stroke-linejoin:miter;stroke-width:0.8;"/>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="p39a6b0d4da">
-   <rect height="217.44" width="334.8" x="48.029688" y="7.2"/>
+  <clipPath id="p1513b7e8e1">
+   <rect height="217.44" width="334.8" x="44.845313" y="8.735196"/>
   </clipPath>
  </defs>
 </svg>
@@ -15036,29 +15085,21 @@ L 382.829688 7.2
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">And</span> <span class="n">assess</span> <span class="n">the</span> <span class="n">preformance</span> <span class="n">of</span> <span class="n">our</span> <span class="n">model</span>
-</pre></div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>And assess the preformance of our model</p>
 
-     </div>
 </div>
-</div>
-</div>
-
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[86]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[88]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pHatFinal</span> <span class="o">=</span> <span class="n">LogitReg</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">betaFinal</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pHatFinal</span> <span class="o">=</span> <span class="n">LogitReg</span><span class="p">(</span><span class="n">Xtest</span><span class="p">,</span><span class="n">betaFinal</span><span class="p">)</span>
 <span class="n">Yhat</span> <span class="o">=</span> <span class="mi">1</span><span class="o">*</span><span class="p">(</span><span class="n">pHatFinal</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="n">accuracy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Yhat</span> <span class="o">==</span> <span class="n">Y</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Yhat</span> <span class="o">==</span> <span class="n">Ytest</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
 </pre></div>
 
@@ -15079,7 +15120,7 @@ L 382.829688 7.2
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>0.6276276276276276
+<pre>0.6428571428571429
 </pre>
 </div>
 </div>
@@ -15088,13 +15129,25 @@ L 382.829688 7.2
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>How does this compare to the linear model?</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[89]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span> 
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span><span class="n">Ytrain</span><span class="p">)</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xtest</span><span class="p">)</span>
+<span class="n">YHatLinear</span> <span class="o">=</span> <span class="mi">1</span><span class="o">*</span><span class="p">(</span><span class="n">test</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">linearAccuracy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">YHatLinear</span> <span class="o">==</span> <span class="n">Ytest</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">linearAccuracy</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15102,6 +15155,37 @@ L 382.829688 7.2
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>0.9761904761904762
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h4 id="Machine-Learning-is-hard">Machine Learning is hard<a class="anchor-link" href="#Machine-Learning-is-hard">&#182;</a></h4>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+
+</div>
 </div>
 </body>
 

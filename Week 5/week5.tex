@@ -93,7 +93,7 @@ After we simplify the log likelihood function more (explained in \href{https://w
 
 \begin{equation}
 	\label{eq:loglikelihood}
-	\ell\left(\boldsymbol{\beta}\right) = \sum_{i=1}^n \left[\ln\left\{1 + e^{\boldsymbol{\beta}'\mX_i}\right\} - Y_i\boldsymbol{\beta}'\mX_i\right]
+	\ell\left(\boldsymbol{\beta}\right) = \sum_{i=1}^n \left[ Y_i\boldsymbol{\beta}'\mX_i -\ln\left\{1 + e^{\boldsymbol{\beta}'\mX_i}\right\}\right]
 \end{equation}
 where \(\boldsymbol{\beta}'\mX_i = \beta_0 + \beta_1X_1 + \dots + \beta_p X_p\). This final log-likelihood expression in \eqref{eq:loglikelihood} is what we will numerically try to maximize. 
 
@@ -102,19 +102,19 @@ where \(\boldsymbol{\beta}'\mX_i = \beta_0 + \beta_1X_1 + \dots + \beta_p X_p\).
 Equation~\eqref{eq:loglikelihood} gives us a fairly simple expression to differentiate and get the gradient of. By direct calculation we find that 
 \begin{equation}
 	\label{eq:ellGrad}
-	\nabla \ell(\boldsymbol{\beta}) = \sum_{i=1}^n \left(\pi(\mX_i; \boldsymbol{\beta}) - Y_i\right)\mX_i
+	\nabla \ell(\boldsymbol{\beta}) = \sum_{i=1}^n \left(Y_i -\pi(\mX_i; \boldsymbol{\beta})\right)\mX_i
 \end{equation}
-This can be expressed even more simply if we use the design matrix and the outcome vector. Let \(\vX = \left(\mX_1, \mX_2, \dots, \mX_n\right)' \in \SR^{n \times p}\) denote the design matrix (feature matrix) and \(\vY = \left(Y_1, \dots, Y_n\right)' \in \SR^p\) denote the outcome vector. Finally, let \(\tilde{\pi}(\vX;\boldsymbol{\beta}) = \left(\pi(\mX_i;\boldsymbol{\beta}),\dots, \pi(\mX_n;\boldsymbol{\beta})\right)'\) denote our vector of predicted probabilities at guess \(\boldsymbol{\beta}\). Then we can express the gradient: 
+This can be expressed even more simply if we use the design matrix and the outcome vector. Let \(\vX = \left(\mX_1, \mX_2, \dots, \mX_n\right)' \in \SR^{n \times p}\) denote the design matrix (feature matrix) and \(\vY = \left(Y_1, \dots, Y_n\right)' \in \SR^n\) denote the outcome vector. Finally, let \(\tilde{\pi}(\vX;\boldsymbol{\beta}) = \left(\pi(\mX_i;\boldsymbol{\beta}),\dots, \pi(\mX_n;\boldsymbol{\beta})\right)'\) denote our vector of predicted probabilities at guess \(\boldsymbol{\beta}\). Then we can express the gradient: 
 \begin{equation}
 	\label{eq:matGrad}
-	\nabla \ell(\boldsymbol{\beta}) = \vX\cdot\left[\tilde\pi(\vX;\boldsymbol{\beta}) - \vY\right]
+	\nabla \ell(\boldsymbol{\beta}) = \left[\vY -\tilde\pi(\vX;\boldsymbol{\beta}) \right]\cdot\vX
 \end{equation}
 perhaps of greater practical importance, this can be directly calculated in numpy using something like:
 \begin{figure}[h!]
 	\centering
 	\begin{BVerbatim}
-		Phat = logitFunction(Xtrain, beta)
-		grad = np.dot(Xtrain, Phat - Ytrain)
+		pHat = logitFunction(Xtrain, beta)
+		grad = np.dot(Ytrain - pHat, Xtrain)
 	\end{BVerbatim}
 \end{figure}
 
