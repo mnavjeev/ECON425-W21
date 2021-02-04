@@ -32,8 +32,13 @@
 \section{Binary Classification}%
 \label{sec:binary}
 
-Suppose I am interested in predicting a binary variable \(Y \in \{0,1\} \) using some (real-valued) explanatory variables \(\vX = \left(1, X_1,\dots,X_p\right)\). For example, in the exercise we will go over in class, we will use the \verb|penguins| dataset from \verb|seaborn|. 
-
+Suppose I am interested in predicting a binary variable \(Y \in \{0,1\} \) using some (real-valued) explanatory variables \(\vX = \left(1, X_1,\dots,X_p\right)\). For example, in the exercise we will go over in class, we will use the \verb|penguins| dataset from \verb|seaborn|. In this dataset we will be interested in using some features describing a penguin's physical attributes to predict whether or not it is a member of the Adelie species. That is our outcome \(Y_i\) looks like
+\[
+	Y_i = \text{Adelie}_i = \begin{cases}
+		1 & \text{if the penguin is a Adelie} \\
+		0 & \text{ otherwise }
+	\end{cases}	
+\] 
 A naive approach to this problem would be to use linear regression to predict \(Y\), and interpret the  \(\widehat Y(\vX)\) value from linear regression as an estimate of the probability that \(Y = 1\) give the explanatory variables \(\vX\). That is, we could try to estimate a model of the form:
 \begin{equation}
 	\label{eq:lpm}
