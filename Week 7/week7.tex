@@ -92,5 +92,21 @@ Some notes:
 	\label{fig:shouvik}
 \end{figure}
 
+\section{Overall Process}%
+\label{sec:overall}
+
+Finally, we combine our knowledge of the prediction process to come up with a unified process for ``learning" the neural net:
+\begin{enumerate}
+	\item Initialize a neural network with some structure (specify activation functions, layers, nodes, edges, etc.)
+	\item Start with an initial guess for your parameter values (bias terms and weights at each node)
+	\item Given your guessed parameter values, ``forward propogate" your inputs through your neural network to get your predicted values
+	\item Given your predicted values ``backward propogate" to compute the gradient of the cost function with respect to each parameter
+	\item Adjust your guess by moving in the direction of the negative gradient
+	\item Repeat steps 3-5 until you reach converge to a minimum
+	\item Try a few different starting guesses to make sure you have a global minimum
+ \end{enumerate}
+
+
+
 \end{document}
 
